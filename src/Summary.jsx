@@ -1,27 +1,29 @@
-function Summary({ transactions }) {
+import { formatMoney } from './i18n'
+
+function Summary({ transactions, t: labels, lang }) {
   const totalIncome = transactions
-    .filter(t => t.type === "income")
-    .reduce((sum, t) => sum + t.amount, 0);
+    .filter(tx => tx.type === "income")
+    .reduce((sum, tx) => sum + tx.amount, 0);
 
   const totalExpenses = transactions
-    .filter(t => t.type === "expense")
-    .reduce((sum, t) => sum + t.amount, 0);
+    .filter(tx => tx.type === "expense")
+    .reduce((sum, tx) => sum + tx.amount, 0);
 
   const balance = totalIncome - totalExpenses;
 
   return (
     <div className="summary">
       <div className="summary-card">
-        <h3>Income</h3>
-        <p className="income-amount">${totalIncome}</p>
+        <h3>{labels.income}</h3>
+        <p className="income-amount">{formatMoney(totalIncome, lang)}</p>
       </div>
       <div className="summary-card">
-        <h3>Expenses</h3>
-        <p className="expense-amount">${totalExpenses}</p>
+        <h3>{labels.expenses}</h3>
+        <p className="expense-amount">{formatMoney(totalExpenses, lang)}</p>
       </div>
       <div className="summary-card">
-        <h3>Balance</h3>
-        <p className="balance-amount">${balance}</p>
+        <h3>{labels.balance}</h3>
+        <p className="balance-amount">{formatMoney(balance, lang)}</p>
       </div>
     </div>
   );

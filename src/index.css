@@ -1,3 +1,14 @@
+:root {
+  --blue: #032ea1;
+  --blue-deep: #021f70;
+  --red: #e00025;
+  --red-deep: #a8001b;
+  --paper: #fbf8f1;
+  --paper-dark: #ece4d2;
+  --ink: #16193a;
+  --gold: #d4a437;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,7 +16,9 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #ffffff;
-  color: #333;
+  font-family: 'Noto Serif Khmer', Georgia, serif;
+  line-height: 1.6;
+  background-color: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
 }

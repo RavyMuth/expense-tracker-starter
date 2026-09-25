@@ -1,64 +1,115 @@
+/* Cambodian flag palette: royal blue, red, white; Angkor gold as accent. Tokens in index.css. */
+
 .app {
-  max-width: 800px;
+  max-width: 840px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0 20px 48px;
+}
+
+/* Header echoes the flag: blue, wide red centre band with Angkor Wat, blue */
+.masthead {
+  text-align: center;
+  color: #fff;
+  margin: 0 -20px 32px;
+  padding: 28px 20px 24px;
+  background:
+    linear-gradient(
+      var(--blue) 0 14px,
+      var(--red) 14px calc(100% - 14px),
+      var(--blue) calc(100% - 14px)
+    );
+  border-bottom: 3px solid var(--gold);
+}
+
+.prasat {
+  width: 150px;
+  color: #fff;
+  margin-bottom: 8px;
 }
 
 h1 {
-  margin-bottom: 4px;
+  font-family: 'Moul', 'Noto Serif Khmer', serif;
+  font-weight: 400;
+  font-size: clamp(24px, 5vw, 36px);
+  line-height: 1.4;
+  color: #fff;
 }
 
 .subtitle {
-  margin-bottom: 20px;
-  color: #666;
+  margin-top: 2px;
+}
+
+.subtitle-km {
+  font-size: 14px;
+  opacity: 0.9;
 }
 
 .summary {
   display: flex;
-  gap: 12px;
-  margin-bottom: 24px;
+  gap: 14px;
+  margin-bottom: 26px;
+}
+
+.summary-card,
+.add-transaction,
+.transactions {
+  background: #fff;
+  border: 1px solid var(--paper-dark);
+  border-top: 4px solid var(--blue);
+  box-shadow: 0 2px 10px rgba(3, 46, 161, 0.1);
+}
+
+.summary-card:nth-child(2) {
+  border-top-color: var(--red);
+}
+
+.summary-card:nth-child(3) {
+  border-top-color: var(--gold);
 }
 
 .summary-card {
   flex: 1;
-  border: 1px solid #ddd;
-  padding: 14px;
-  background: #fff;
+  padding: 16px;
+  text-align: center;
 }
 
 .summary-card h3 {
-  font-size: 13px;
-  color: #888;
-  margin-bottom: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #55597a;
 }
 
 .income-amount {
-  color: green;
-  font-size: 20px;
-  font-weight: bold;
+  color: var(--blue);
+  font-size: 22px;
+  font-weight: 800;
 }
 
 .expense-amount {
-  color: red;
-  font-size: 20px;
-  font-weight: bold;
+  color: var(--red-deep);
+  font-size: 22px;
+  font-weight: 800;
 }
 
 .balance-amount {
-  font-size: 20px;
-  font-weight: bold;
+  color: var(--ink);
+  font-size: 22px;
+  font-weight: 800;
 }
 
-.add-transaction {
-  border: 1px solid #ddd;
-  padding: 16px;
-  margin-bottom: 24px;
-  background: #fff;
+.add-transaction,
+.transactions {
+  padding: 20px;
+  margin-bottom: 26px;
 }
 
-.add-transaction h2 {
-  font-size: 16px;
-  margin-bottom: 12px;
+.add-transaction h2,
+.transactions h2 {
+  font-family: 'Moul', 'Noto Serif Khmer', serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: var(--blue);
+  margin-bottom: 14px;
 }
 
 form {
@@ -68,51 +119,56 @@ form {
 }
 
 form input,
-form select {
-  padding: 8px;
-  border: 1px solid #ccc;
+form select,
+.filters select {
+  font-family: inherit;
+  padding: 8px 10px;
+  border: 1px solid #b9bdd6;
+  background: #fff;
+  color: var(--ink);
   font-size: 14px;
 }
 
+form input:focus-visible,
+form select:focus-visible,
+.filters select:focus-visible,
+form button:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+
 form input[type="text"] {
-  flex: 2;
+  flex: 2 1 160px;
 }
 
-form input[type="number"] {
-  flex: 1;
-}
-
+form input[type="number"],
 form select {
-  flex: 1;
+  flex: 1 1 100px;
 }
 
 form button {
-  padding: 8px 20px;
-  background: #333;
+  font-family: inherit;
+  padding: 8px 26px;
+  background: var(--red);
   color: #fff;
   border: none;
   cursor: pointer;
   font-size: 14px;
+  font-weight: 600;
 }
 
-.transactions {
-  margin-bottom: 24px;
-}
-
-.transactions h2 {
-  font-size: 16px;
-  margin-bottom: 12px;
+form button:hover {
+  background: var(--red-deep);
 }
 
 .filters {
   display: flex;
   gap: 8px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
 }
 
 .filters select {
-  padding: 6px;
-  border: 1px solid #ccc;
   font-size: 13px;
 }
 
@@ -122,27 +178,80 @@ table {
 }
 
 thead {
-  background: #f5f5f5;
+  background: var(--blue);
 }
 
 th, td {
   padding: 10px;
   text-align: left;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--paper-dark);
   font-size: 14px;
 }
 
 th {
-  font-size: 12px;
-  color: #888;
-  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+}
+
+tbody tr:nth-child(even) {
+  background: #f3f4fb;
+}
+
+td.income-amount,
+td.expense-amount {
+  font-size: 15px;
 }
 
 .delete-btn {
   padding: 4px 10px;
-  background: #eee;
-  border: 1px solid #ccc;
+  background: var(--paper-dark);
+  border: 1px solid #b9bdd6;
   cursor: pointer;
   font-size: 12px;
-  color: #333;
+  color: var(--ink);
+}
+
+@media (max-width: 560px) {
+  .summary {
+    flex-direction: column;
+  }
+
+  th, td {
+    padding: 8px 6px;
+    font-size: 13px;
+  }
+}
+
+.masthead {
+  position: relative;
+}
+
+.lang-switch {
+  position: absolute;
+  top: 26px;
+  right: 20px;
+  display: flex;
+  border: 1px solid #fff;
+}
+
+.lang-switch button {
+  font-family: inherit;
+  font-size: 13px;
+  padding: 3px 12px;
+  background: transparent;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.lang-switch button[aria-pressed="true"] {
+  background: #fff;
+  color: var(--blue);
+  font-weight: 600;
+}
+
+.lang-switch button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
 }
